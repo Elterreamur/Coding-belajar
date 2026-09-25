@@ -3,160 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Website pembelajaran Teknik Komputer dan Jaringan dengan materi dan soal latihan." />
+  <meta name="description" content="Website pembelajaran Teknik Komputer dan Jaringan (TKJ) dengan materi, kompetensi, dan soal latihan." />
   <title>NetKomp | Teknik Komputer dan Jaringan</title>
   <style>
     :root {
       --navy: #0b1736;
+      --navy-2: #102249;
       --blue: #2563eb;
       --cyan: #22d3ee;
+      --mint: #10b981;
+      --yellow: #fbbf24;
+      --red: #ef4444;
       --ink: #172033;
       --muted: #64748b;
+      --soft: #edf4ff;
       --surface: #ffffff;
-      --soft: #f1f5ff;
       --line: #e2e8f0;
-      --shadow: 0 20px 50px rgba(15, 23, 42, .12);
-      --gold: #f59e0b;
-      --green: #10b981;
-      --red: #ef4444;
+      --shadow: 0 20px 55px rgba(15, 23, 42, .12);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: Inter, Arial, sans-serif;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: #f7fafd;
       color: var(--ink);
-      line-height: 1.6;
-      background: #f8fbff;
+      line-height: 1.7;
     }
     a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
     ul, ol { list-style: none; }
-    .container { width: min(1120px, calc(100% - 36px)); margin: auto; }
+    .container { width: min(1160px, calc(100% - 36px)); margin: auto; }
 
     .nav {
       position: sticky;
       top: 0;
       z-index: 20;
       background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(226,232,240,.8);
+      border-bottom: 1px solid rgba(226,232,240,0.8);
+      backdrop-filter: blur(10px);
     }
-
     .nav-inner {
-      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 74px;
+      gap: 18px;
+    }
+    .brand {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--navy);
+      letter-spacing: -0.03em;
     }
-
-    .brand {
-      display: flex; align-items: center; gap: 12px;
-      font-weight: 800; font-size: 1.2rem; color: var(--navy);
-    }
-
     .brand-mark {
-      width: 40px; height: 40px; border-radius: 12px;
-      display: grid; place-items: center;
+      width: 40px; height: 40px; display: grid; place-items: center;
+      border-radius: 12px;
       background: linear-gradient(135deg, var(--blue), var(--cyan));
       color: white;
-      box-shadow: 0 8px 18px rgba(37,99,235,.25);
+      box-shadow: 0 10px 20px rgba(37,99,235,.25);
     }
-
     .nav-links {
-      display:flex; align-items:center; gap:24px;
-      color: var(--muted); font-size: .94rem; font-weight: 700;
+      display: flex; align-items: center; gap: 24px;
+      color: var(--muted); font-weight: 700; font-size: .94rem;
     }
-
     .nav-links a:hover { color: var(--blue); }
-    .menu-btn { display:none; }
+    .menu-btn { display: none; }
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 13px 22px; border-radius: 12px; border: 1px solid transparent;
-      font-weight: 800; transition: .2s ease;
+      font-weight: 800; transition: .2s ease; cursor: pointer;
     }
     .btn-primary {
       background: linear-gradient(135deg, var(--blue), #1d4ed8);
-      color: #fff; box-shadow: 0 10px 18px rgba(37,99,235,.25);
+      color: white; box-shadow: 0 12px 24px rgba(37,99,235,.24);
     }
-    .btn-primary:hover { transform: translateY(-3px); }
+    .btn-primary:hover { transform: translateY(-2px); }
     .btn-ghost {
-      background: #fff; border-color: var(--line); color: var(--navy);
+      background: white; color: var(--navy); border-color: var(--line);
     }
-    .btn-ghost:hover { border-color: #bfd5ff; color: var(--blue); }
+    .btn-ghost:hover { border-color: #cfe1ff; color: var(--blue); transform: translateY(-2px); }
 
     .hero {
-      background: radial-gradient(circle at 80% 10%, #dbeafe 0, transparent 32%),
-                  linear-gradient(135deg, #f8fbff 0%, #eff6ff 100%);
-      padding: 90px 0 80px;
+      padding: 88px 0 76px;
+      background: radial-gradient(circle at 85% 10%, #dfeafe 0, transparent 28%),
+                  linear-gradient(135deg, #f7fbff 0%, #eef5ff 100%);
       overflow: hidden;
     }
-
     .hero-grid {
-      display:grid; grid-template-columns: 1.1fr .9fr; align-items:center; gap:56px;
+      display: grid; grid-template-columns: 1.08fr 0.92fr; align-items: center; gap: 58px;
     }
-
     .eyebrow {
-      display: inline-flex; align-items:center; gap:8px;
-      font-size: .76rem; letter-spacing: .12em; text-transform: uppercase;
-      font-weight: 800; color: var(--blue);
+      display: inline-flex;
+      align-items: center; gap: 8px;
+      color: var(--blue);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
     }
     .eyebrow::before {
-      content: ''; width: 28px; height: 3px; border-radius: 12px;
+      content: "";
+      width: 28px; height: 3px; display: inline-block;
+      border-radius: 5px;
       background: var(--cyan);
     }
-
     h1 {
-      margin-top: 18px; color: var(--navy); font-size: clamp(2.5rem, 5vw, 4.8rem);
-      line-height: 1.05; letter-spacing: -.06em;
+      margin-top: 18px;
+     font-size: clamp(2.5rem, 5.5vw, 4.9rem);
+      line-height: 1.04; letter-spacing: -0.06em; color: var(--navy);
     }
     h1 span { color: var(--blue); }
     .hero-copy {
-      color: var(--muted); font-size: 1.1rem; max-width: 560px;
-      margin-top: 18px;
+      margin-top: 18px; max-width: 560px;
+      color: var(--muted); font-size: 1.08rem;
     }
     .actions {
-      display:flex; flex-wrap: wrap; gap: 14px; margin-top:28px;
+      display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px;
     }
 
     .network-card {
-      position: relative; min-height: 350px; padding: 28px;
-      background: var(--navy); border-radius: 30px; overflow: hidden;
-      box-shadow: var(--shadow);
-      color: white;
+      position: relative; min-height: 360px; padding: 28px;
+      border-radius: 30px; background: var(--navy);
+      box-shadow: var(--shadow); color: white; overflow: hidden;
     }
     .network-card::before, .network-card::after {
-      content: ''; position: absolute; border: 1px solid rgba(34,211,238,.3); border-radius: 50%;
+      content: ""; position: absolute; border-radius: 50%;
+      border: 1px solid rgba(34,211,238,.28);
     }
-    .network-card::before { width: 340px; height: 340px; right: -120px; top: -130px; }
-    .network-card::after { width: 500px; height: 500px; left: -260px; bottom: -330px; }
+    .network-card::before {
+      width: 340px; height: 340px; right: -125px; top: -140px;
+    }
+    .network-card::after {
+      width: 500px; height: 500px; left: -255px; bottom: -350px;
+    }
     .card-top {
-      position: relative; z-index: 1; display:flex; justify-content:space-between;
-      color:#c7d2fe; font-size:0.82rem; letter-spacing:.08em; font-weight:700;
+      position: relative; z-index: 1; display: flex; justify-content: space-between;
+      align-items: center; color: #d5dcff; font-size: .8rem; letter-spacing: .1em; font-weight: 800;
     }
-    .status { display:flex; align-items:center; gap:8px; }
+    .status { display: flex; align-items: center; gap: 8px; }
     .status i {
-      width: 8px; height: 8px; border-radius:50%; background:#4ade80;
-      box-shadow: 0 0 12px #4ade80;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #4ade80; box-shadow: 0 0 12px #4ade80;
     }
-
     .diagram {
-      position: relative; z-index: 1; display:grid; place-items:center; height: 236px; margin-top: 26px;
+      position: relative; z-index: 1; display: grid; place-items: center;
+      margin-top: 24px; height: 250px;
     }
     .router {
-      width: 102px; height: 102px; border-radius: 28px; border: 2px solid var(--cyan);
-      display:grid; place-items:center; font-size:2.8rem; background: rgba(19,49,108,.75);
-      box-shadow: 0 0 28px rgba(34,211,238,.25);
+      width: 100px; height: 100px; display: grid; place-items: center;
+      font-size: 2.9rem; border: 2px solid var(--cyan); border-radius: 28px;
+      background: rgba(19,49,108,.75); box-shadow: 0 0 30px rgba(34,211,238,.25);
     }
     .node {
-      position:absolute; width: 54px; height:54px; border-radius: 16px; border:1px solid rgba(255,255,255,.3);
-      display:grid; place-items:center; background: rgba(255,255,255,.08); font-size: 1.4rem;
+      position: absolute; width: 54px; height:54px; display:grid; place-items:center;
+      background: rgba(255,255,255,.08); border-radius: 16px; border: 1px solid rgba(255,255,255,.24);
+      font-size: 1.4rem;
     }
-    .node.one { top: 34px; left: 60px; } .node.two { top: 40px; right: 62px; }
-    .node.three { bottom: 18px; left: 28%; } .node.four { bottom: 18px; right: 28%; }
+    .node.one { left: 58px; top: 36px; }
+    .node.two { right: 58px; top: 42px; }
+    .node.three { left: 28%; bottom: 18px; }
+    .node.four { right: 28%; bottom: 18px; }
     .line {
-      position:absolute; width: 160px; height:1px; background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      position: absolute; width: 160px; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), transparent);
       transform-origin: center;
     }
     .line.a { transform: rotate(35deg); }
@@ -165,126 +176,152 @@
     .line.d { transform: rotate(145deg); }
 
     section { padding: 90px 0; }
-    .section-heading { max-width: 700px; margin-bottom: 36px; }
+    .section-heading {
+      max-width: 700px; margin-bottom: 36px;
+    }
     .section-heading h2 {
-      margin-top: 12px; color: var(--navy); font-size: clamp(1.9rem, 4vw, 2.9rem);
-      line-height: 1.15; letter-spacing: -.04em;
+      margin-top: 12px; font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.15; letter-spacing: -0.05em; color: var(--navy);
     }
     .section-heading p {
-      margin-top: 12px; color: var(--muted); font-size: 1.02rem;
+      margin-top: 12px; color: var(--muted);
+      font-size: 1rem;
     }
 
-    .topics { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    .topics {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px;
+    }
     .topic {
-      background:#fff; border:1px solid var(--line); border-radius: 18px; padding: 25px; transition: .2s ease;
+      background: white; border: 1px solid var(--line); border-radius: 18px; padding: 24px;
+      box-shadow: 0 6px 16px rgba(15,23,42,.025); transition: .2s ease;
     }
     .topic:hover {
-      transform: translateY(-5px); border-color: #bfdbfe; box-shadow: var(--shadow);
+      transform: translateY(-5px); border-color: #cfe1ff; box-shadow: var(--shadow);
     }
     .icon {
-      width: 50px; height: 50px; display:grid; place-items:center; border-radius: 14px;
-      background: var(--soft); margin-bottom: 18px; font-size: 1.5rem;
+      width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+      background: var(--soft); font-size: 1.5rem; margin-bottom: 18px;
     }
     .topic h3 { color: var(--navy); margin-bottom: 8px; font-size: 1.12rem; }
     .topic p { color: var(--muted); font-size: .94rem; }
 
-    .learning {
-      background: var(--navy); color: white;
+    .statistics {
+      display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px;
     }
-    .learning .section-heading h2 { color:white; }
+    .stat-card {
+      padding: 26px 20px; border-radius: 18px; background: white; border: 1px solid var(--line);
+      text-align: center;
+    }
+    .stat-card strong {
+      display: block; font-size: 2rem; color: var(--blue); letter-spacing: -0.05em;
+    }
+    .stat-card span {
+      color: var(--muted); font-weight: 700; font-size: .92rem;
+    }
+
+    .learning {
+      background: var(--navy);
+      color: white;
+    }
+    .learning .section-heading h2 { color: white; }
     .learning .section-heading p { color: #a9bad9; }
     .steps {
-      display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:18px;
+      display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px;
     }
     .step {
-      padding: 22px; border-radius: 18px; background: rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px; padding: 22px;
     }
     .step-number {
-      display:inline-grid; place-items:center; width: 38px; height: 38px; border-radius: 10px; margin-bottom: 24px;
-      background: var(--cyan); color: var(--navy); font-weight: 900;
+      display: inline-grid; place-items: center; width: 38px; height: 38px;
+      background: var(--cyan); color: var(--navy); border-radius: 10px; font-weight: 900;
+      margin-bottom: 24px;
     }
-    .step h3 { margin-bottom:7px; }
+    .step h3 { margin-bottom: 7px; }
     .step p { color: #a9bad9; font-size: .92rem; }
 
-    .materi-list {
-      display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px;
+    .materi-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px;
     }
     .materi-item {
-      background: #fff; border:1px solid var(--line); border-radius: 18px; padding: 22px 20px;
+      background: white; border: 1px solid var(--line); border-radius: 18px; padding: 22px 20px;
     }
-    .materi-item h3 {
-      color: var(--navy); margin-bottom: 10px; font-size: 1.1rem;
-    }
+    .materi-item h3 { color: var(--navy); margin-bottom: 10px; }
     .materi-item ul li {
-      padding-left: 18px; position: relative; color: var(--muted); margin-bottom: 6px;
+      position: relative; padding-left: 18px; color: var(--muted); margin-bottom: 7px;
     }
     .materi-item ul li::before {
-      content: '•'; position:absolute; left:0; top:0; color: var(--blue); font-weight: 900;
+      content: "•"; position: absolute; left: 0; color: var(--blue); font-weight: 900;
     }
 
     .quiz {
-      background: linear-gradient(180deg, #f8fbff 0, #eef4ff 100%);
+      background: linear-gradient(180deg, #f9fbff 0%, #edf4ff 100%);
     }
     .quiz-wrap {
-      background:#fff; border:1px solid var(--line); border-radius: 22px; padding: 26px; box-shadow: 0 12px 30px rgba(15,23,42,.05);
+      background: white; border: 1px solid var(--line); border-radius: 22px; padding: 26px;
+      box-shadow: 0 10px 24px rgba(15,23,42,.04);
     }
     .question {
-      border:1px solid var(--line); border-radius: 16px; padding: 18px 16px; margin-bottom: 18px;
-      background: #fff;
+      border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px; background: white;
+      margin-bottom: 18px;
     }
     .question p {
-      font-weight: 800; color: var(--navy); margin-bottom: 12px;
+      color: var(--navy); font-weight: 800; margin-bottom: 12px;
     }
     .question ol {
-      display:grid; gap:10px; padding-left: 20px; color: var(--ink);
+      display: grid; gap: 10px; padding-left: 24px;
+      color: var(--ink);
     }
     .question li { list-style: lower-alpha; }
     .answer-key {
-      margin-top: 18px; padding: 18px 20px; background: #eff6ff; border:1px solid #dbeafe; border-radius: 16px;
+      margin-top: 18px; background: #eef6ff; border: 1px solid #dbeafe; border-radius: 16px;
+      padding: 18px 20px;
     }
-    .answer-key h3 { margin-bottom: 12px; color: var(--navy); }
-    .answer-key ul { display:grid; gap: 8px; color: var(--ink); }
-    .answer-key li strong { color: var(--blue); }
+    .answer-key h3 { color: var(--navy); margin-bottom: 10px; }
+    .answer-key ul {
+      display: grid; gap: 8px; color: var(--ink);
+    }
+    .answer-key strong { color: var(--blue); }
 
     .cta {
-      text-align: center; background: #eff6ff; padding: 72px 0;
+      background: #eef6ff; text-align: center; padding: 72px 0;
     }
     .cta h2 {
-      color: var(--navy); font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.15; letter-spacing: -.04em;
+      font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--navy); letter-spacing: -0.05em;
     }
     .cta p {
-      max-width: 620px; margin: 12px auto 20px; color: var(--muted);
+      max-width: 620px; margin: 12px auto 24px; color: var(--muted);
     }
 
     footer {
-      background:#07112a; color:#b5c4d8; padding: 26px 0; font-size:.88rem;
+      background: #07112a; color: #bad0ec; padding: 28px 0; font-size: .88rem;
     }
     .footer-inner {
-      display:flex; justify-content:space-between; gap:18px; align-items:center;
+      display: flex; justify-content: space-between; align-items: center; gap: 18px;
     }
 
     @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 34px; }
       .topics { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .statistics { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .steps { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .materi-list { grid-template-columns: 1fr; }
+      .materi-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
-      .container { width: min(100% - 22px, 1120px); }
+      .container { width: min(100% - 22px, 1160px); }
       .nav-links {
-        display:none; position:absolute; top:72px; left:0; right:0; flex-direction:column;
-        align-items:flex-start; background:white; padding:18px 22px; border-bottom:1px solid var(--line);
+        display: none; position: absolute; top: 74px; left: 0; right: 0;
+        flex-direction: column; align-items: flex-start; background: white;
+        padding: 18px 22px; border-bottom: 1px solid var(--line);
       }
-      .nav-links.open { display:flex; }
+      .nav-links.open { display: flex; }
       .menu-btn {
-        display:block; background: transparent; border:0; font-size: 1.6rem; color: var(--navy);
-        cursor:pointer;
+        display: block; border: 0; background: transparent; font-size: 1.7rem;
+        color: var(--navy); cursor: pointer;
       }
-      .topics, .steps { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction:column; align-items:flex-start; }
+      .topics, .statistics, .steps { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -295,10 +332,10 @@
       <button class="menu-btn" aria-label="Buka menu">☰</button>
       <nav class="nav-links">
         <a href="#materi">Materi</a>
-        <a href="#pembelajaran">Pola Belajar</a>
-        <a href="#latihan">Soal Latihan</a>
-        <a href="#tentang">Tentang</a>
-        <a class="btn btn-primary" href="#latihan">Mulai Belajar</a>
+        <a href="#kompetensi">Kompetensi</a>
+        <a href="#pembelajaran">Belajar</a>
+        <a href="#latihan">Latihan</a>
+        <a class="btn btn-primary" href="#latihan">Mulai</a>
       </nav>
     </div>
   </header>
@@ -308,10 +345,9 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Teknik Komputer & Jaringan</div>
-          <h1>Belajar <span>TKJ</span> dengan cara praktis.</h1>
+          <h1>Bangun masa depanmu lewat <span>teknologi jaringan</span>.</h1>
           <p class="hero-copy">
-            Website ini menyediakan materi dasar, langkah belajar, serta soal latihan yang bisa langsung dipelajari.
-            Cocok untuk siswa, peserta didik, dan siapapun yang ingin memahami teknologi komputer dan jaringan.
+            Pelajari dasar komputer, jaringan, keamanan, dan troubleshooting dengan metode yang sederhana, praktis, dan mudah dipahami.
           </p>
           <div class="actions">
             <a class="btn btn-primary" href="#materi">Lihat Materi</a>
@@ -342,47 +378,63 @@
     <section id="materi">
       <div class="container">
         <div class="section-heading">
-          <div class="eyebrow">Materi Pembelajaran</div>
-          <h2>Dasar-dasar TKJ yang wajib dipahami.</h2>
-          <p>Berikut materi penting dalam Teknik Komputer dan Jaringan yang sering dipelajari di sekolah maupun kursus.</p>
+          <div class="eyebrow">Materi utama</div>
+          <h2>Panduan dasar teknik komputer dan jaringan.</h2>
+          <p>TKJ bukan hanya tentang menghubungkan komputer, tetapi juga memahami perangkat keras, perangkat lunak, sistem jaringan, dan keamanan data.</p>
         </div>
 
         <div class="topics">
           <article class="topic">
             <div class="icon">🧩</div>
-            <h3>1. Komputer & Perangkat Keras</h3>
-            <p>Komputer terdiri dari CPU, RAM, hard disk, motherboard, monitor, keyboard, dan mouse. Tiap komponen memiliki tugas masing-masing.</p>
+            <h3>Hardware Komputer</h3>
+            <p>CPU, RAM, motherboard, hard disk, dan perangkat input-output menjadi fondasi kerja komputer.</p>
           </article>
 
           <article class="topic">
-            <div class="icon">💻</div>
-            <h3>2. Perangkat Lunak</h3>
-            <p>Software dibedakan menjadi sistem operasi dan aplikasi. Sistem operasi mengatur kerja komputer, sedangkan aplikasi membantu kebutuhan pengguna.</p>
+            <div class="icon">💾</div>
+            <h3>Software & Sistem Operasi</h3>
+            <p>Software mengolah pekerjaan pengguna, sementara sistem operasi mengatur seluruh kebutuhan komputer.</p>
           </article>
 
           <article class="topic">
             <div class="icon">🌐</div>
-            <h3>3. Jaringan Komputer</h3>
-            <p>Jaringan adalah hubungan antar perangkat untuk berbagi data dan sumber daya. Contohnya LAN, MAN, dan WAN.</p>
+            <h3>Jaringan Komputer</h3>
+            <p>LAN, WAN, topologi, IP address, routing, dan switch menjadi bagian penting dalam komunikasi data.</p>
           </article>
 
           <article class="topic">
-            <div class="icon">📡</div>
-            <h3>4. Topologi Jaringan</h3>
-            <p>Topologi menggambarkan bentuk jaringan, seperti star, bus, ring, dan mesh. Topologi menentukan cara perangkat terhubung.</p>
-          </article>
-
-          <article class="topic">
-            <div class="icon">🧠</div>
-            <h3>5. IP Address & Subnetting</h3>
-            <p>IP address adalah alamat unik pada perangkat jaringan. Subnetting membantu membagi jaringan agar lebih efisien dan aman.</p>
+            <div class="icon">📶</div>
+            <h3>Wireless Network</h3>
+            <p>Wi-Fi, access point, dan konfigurasi jaringan nirkabel membantu perangkat terhubung tanpa kabel.</p>
           </article>
 
           <article class="topic">
             <div class="icon">🛡️</div>
-            <h3>6. Keamanan Jaringan</h3>
-            <p>Keamanan jaringan penting untuk mencegah serangan virus, akses ilegal, dan pencurian data. Firewall dan antivirus sangat membantu.</p>
+            <h3>Keamanan Jaringan</h3>
+            <p>Firewall, antivirus, autentikasi, dan backup data menjaga sistem tetap aman dan stabil.</p>
           </article>
+
+          <article class="topic">
+            <div class="icon">🔧</div>
+            <h3>Troubleshooting</h3>
+            <p>Mengetahui cara mencari masalah, menguji koneksi, dan menyelesaikan gangguan jaringan adalah keterampilan penting.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kompetensi">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Kompetensi</div>
+          <h2>Yang akan kamu kuasai setelah belajar TKJ.</h2>
+        </div>
+
+        <div class="statistics">
+          <div class="stat-card"><strong>01</strong><span>Merakit komputer</span></div>
+          <div class="stat-card"><strong>02</strong><span>Instalasi sistem operasi</span></div>
+          <div class="stat-card"><strong>03</strong><span>Mengkonfigurasi jaringan</span></div>
+          <div class="stat-card"><strong>04</strong><span>Menangani masalah jaringan</span></div>
         </div>
       </div>
     </section>
@@ -390,84 +442,84 @@
     <section class="learning" id="pembelajaran">
       <div class="container">
         <div class="section-heading">
-          <div class="eyebrow">Cara Belajar TKJ</div>
-          <h2>Langkah mudah agar materi masuk dengan cepat.</h2>
-          <p>Belajar TKJ lebih efektif jika dilakukan bertahap, praktis, dan disertai latihan.</p>
+          <div class="eyebrow">Cara efektif belajar</div>
+          <h2>Belajar TKJ secara bertahap dan praktis.</h2>
+          <p>Proses belajar yang sistematis akan membuat konsep lebih mudah dipahami dan diterapkan.</p>
         </div>
 
         <div class="steps">
           <article class="step">
             <span class="step-number">01</span>
-            <h3>Pahami konsep dasar</h3>
-            <p>Mulai dengan pengenalan komputer, software, dan jaringan agar fondasi kuat.</p>
+            <h3>Pahami teori</h3>
+            <p>Mulai dari dasar komputer, jaringan, dan fungsi komponen utama.</p>
           </article>
 
           <article class="step">
             <span class="step-number">02</span>
-            <h3>Amati komponen</h3>
-            <p>Kenali fungsi motherboard, RAM, CPU, NIC, router, dan switch supaya lebih familiar.</p>
+            <h3>Latih praktik</h3>
+            <p>Coba instalasi OS, cek IP, dan lakukan konfigurasi sederhana pada jaringan.</p>
           </article>
 
           <article class="step">
             <span class="step-number">03</span>
-            <h3>Praktik langsung</h3>
-            <p>Cobalah install sistem operasi, konfigurasi Wi-Fi, atau cek IP address pada komputer.</p>
+            <h3>Analisis masalah</h3>
+            <p>Pelajari cara memecahkan gangguan seperti tidak terhubung, kabel rusak, atau IP conflict.</p>
           </article>
 
           <article class="step">
             <span class="step-number">04</span>
-            <h3>Latihan soal</h3>
-            <p>Uji pemahaman dengan pertanyaan pilihan ganda agar materi lebih tertanam.</p>
+            <h3>Uji pemahaman</h3>
+            <p>Kerjakan soal dan evaluasi hasil belajar untuk melihat sejauh mana pengetahuanmu.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="materi-lanjut">
+    <section>
       <div class="container">
         <div class="section-heading">
-          <div class="eyebrow">Materi Mendalam</div>
-          <h2>Topik yang sering muncul di pembelajaran TKJ.</h2>
+          <div class="eyebrow">Rangkuman materi</div>
+          <h2>Topik penting yang sering diujikan.</h2>
         </div>
 
-        <div class="materi-list">
+        <div class="materi-grid">
           <div class="materi-item">
             <h3>Perangkat keras komputer</h3>
             <ul>
-              <li>CPU berfungsi sebagai otak komputer.</li>
-              <li>RAM menyimpan data sementara saat komputer bekerja.</li>
+              <li>CPU sebagai pusat pengolahan data.</li>
+              <li>RAM berfungsi menyimpan data sementara.</li>
+              <li>Motherboard menghubungkan semua komponen.</li>
               <li>Hard disk menyimpan data secara permanen.</li>
-              <li>Motherboard menjadi penghubung semua komponen utama.</li>
             </ul>
           </div>
 
           <div class="materi-item">
             <h3>Jaringan komputer</h3>
             <ul>
-              <li>LAN digunakan dalam area lokal seperti sekolah dan kantor.</li>
-              <li>WAN menghubungkan jaringan antar kota atau negara.</li>
-              <li>Router menghubungkan jaringan yang berbeda.</li>
-              <li>Switch menghubungkan perangkat dalam satu jaringan lokal.</li>
+              <li>LAN untuk jaringan lokal.</li>
+              <li>WAN untuk jaringan luas antar daerah.</li>
+              <li>Router menghubungkan jaringan berbeda.</li>
+              <li>Switch menghubungkan perangkat dalam satu LAN.</li>
             </ul>
           </div>
 
           <div class="materi-item">
-            <h3>IP Address</h3>
+            <h3>Alamat IP dan DNS</h3>
             <ul>
-              <li>IPv4 terdiri dari 4 oktet yang dipisahkan dengan titik.</li>
-              <li>Setiap perangkat memerlukan IP agar bisa saling berkomunikasi.</li>
+              <li>IP address digunakan agar perangkat bisa saling berkomunikasi.</li>
+              <li>DNS menerjemahkan nama domain menjadi IP.</li>
               <li>Gateway adalah pintu keluar menuju jaringan lain.</li>
-              <li>DNS menerjemahkan nama domain menjadi alamat IP.</li>
+              <li>Subnetting membagi jaringan agar lebih efisien.</li>
             </ul>
           </div>
 
           <div class="materi-item">
-            <h3>Keamanan jaringan</h3>
+            <h3>Keamanan dan perawatan</h3>
             <ul>
-              <li>Firewall membatasi lalu lintas data yang masuk dan keluar.</li>
-              <li>Antivirus membantu mencegah infeksi malware.</li>
-              <li>Backup data penting agar data tidak hilang saat terjadi masalah.</li>
-              <li>Penggunaan password yang kuat membantu mencegah akses ilegal.</li>
+              <li>Firewall membatasi akses tidak sah.</li>
+              <li>Antivirus melindungi dari malware.</li>
+              <li>Backup data mencegah kehilangan informasi penting.</li>
+              <li>Perawatan rutin membuat perangkat lebih awet dan stabil.</li>
             </ul>
           </div>
         </div>
@@ -477,9 +529,9 @@
     <section class="quiz" id="latihan">
       <div class="container">
         <div class="section-heading">
-          <div class="eyebrow">Soal Latihan</div>
-          <h2>Coba jawab soal berikut.</h2>
-          <p>Soal ini bertujuan untuk menguji pemahaman dasar tentang hardware, jaringan, dan keamanan komputer.</p>
+          <div class="eyebrow">Soal latihan</div>
+          <h2>Coba jawabanmu berikut ini.</h2>
+          <p>Latihan ini akan membantu kamu menguji pemahaman terhadap materi TKJ yang sudah dipelajari.</p>
         </div>
 
         <div class="quiz-wrap">
@@ -487,9 +539,9 @@
             <p>1. Perangkat yang berfungsi sebagai otak komputer adalah...</p>
             <ol>
               <li>RAM</li>
-              <li>Keyboard</li>
-              <li>CPU</li>
               <li>Monitor</li>
+              <li>CPU</li>
+              <li>Keyboard</li>
             </ol>
           </div>
 
@@ -498,23 +550,13 @@
             <ol>
               <li>Menyimpan data secara permanen</li>
               <li>Menyimpan data sementara saat komputer aktif</li>
-              <li>Menghubungkan komputer ke internet</li>
+              <li>Menghubungkan jaringan</li>
               <li>Mengolah gambar</li>
             </ol>
           </div>
 
           <div class="question">
-            <p>3. Berikut ini yang termasuk perangkat jaringan adalah...</p>
-            <ol>
-              <li>Printer</li>
-              <li>Router</li>
-              <li>Monitor</li>
-              <li>Scanner</li>
-            </ol>
-          </div>
-
-          <div class="question">
-            <p>4. Jaringan yang mencakup wilayah lokal seperti sekolah dan kantor disebut...</p>
+            <p>3. Jaringan yang mencakup wilayah lokal seperti sekolah atau kantor disebut...</p>
             <ol>
               <li>WAN</li>
               <li>LAN</li>
@@ -524,67 +566,55 @@
           </div>
 
           <div class="question">
-            <p>5. Alat yang berfungsi meneruskan paket data antara jaringan yang berbeda adalah...</p>
+            <p>4. Perangkat yang berfungsi menghubungkan beberapa jaringan adalah...</p>
             <ol>
-              <li>Switch</li>
               <li>Router</li>
-              <li>Keyboard</li>
               <li>Mouse</li>
+              <li>Monitor</li>
+              <li>Printer</li>
             </ol>
           </div>
 
           <div class="question">
-            <p>6. Fungsi DNS adalah...</p>
+            <p>5. DNS berfungsi untuk...</p>
             <ol>
-              <li>Menyimpan data</li>
-              <li>Mengubah nama domain menjadi alamat IP</li>
-              <li>Membuat jaringan</li>
-              <li>Menghubungkan monitor</li>
+              <li>Menyimpan file secara permanen</li>
+              <li>Menerjemahkan nama domain menjadi IP</li>
+              <li>Menyalakan komputer</li>
+              <li>Memindahkan data antar jaringan</li>
             </ol>
           </div>
 
           <div class="question">
-            <p>7. Berikut ini yang termasuk contoh keamanan jaringan adalah...</p>
+            <p>6. Berikut ini yang termasuk keamanan jaringan adalah...</p>
             <ol>
               <li>Firewall</li>
-              <li>USB</li>
               <li>Keyboard</li>
-              <li>Modem</li>
-            </ol>
-          </div>
-
-          <div class="question">
-            <p>8. Jika komputer tidak bisa terhubung ke internet, langkah pertama yang biasanya dilakukan adalah...</p>
-            <ol>
-              <li>Menghapus file penting</li>
-              <li>Memeriksa koneksi jaringan dan IP address</li>
-              <li>Menyalakan speaker</li>
-              <li>Membuka aplikasi game</li>
+              <li>USB</li>
+              <li>Speaker</li>
             </ol>
           </div>
 
           <div class="answer-key">
-            <h3>Kunci Jawaban</h3>
+            <h3>Kunci jawaban</h3>
             <ul>
               <li><strong>1.</strong> C. CPU</li>
               <li><strong>2.</strong> B. Menyimpan data sementara saat komputer aktif</li>
-              <li><strong>3.</strong> B. Router</li>
-              <li><strong>4.</strong> B. LAN</li>
-              <li><strong>5.</strong> B. Router</li>
-              <li><strong>6.</strong> B. Mengubah nama domain menjadi alamat IP</li>
-              <li><strong>7.</strong> A. Firewall</li>
-              <li><strong>8.</strong> B. Memeriksa koneksi jaringan dan IP address</li>
+              <li><strong>3.</strong> B. LAN</li>
+              <li><strong>4.</strong> A. Router</li>
+              <li><strong>5.</strong> B. Menerjemahkan nama domain menjadi IP</li>
+              <li><strong>6.</strong> A. Firewall</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="cta" id="tentang">
+    <section class="cta" id="kontak">
       <div class="container">
-        <h2>TKJ adalah bekal masa depan digital.</h2>
-        <p>Dengan memahami komputer, jaringan, dan keamanan, kamu siap menghadapi era teknologi yang terus berkembang.</p>
-        <a class="btn btn-primary" href="#beranda">Kembali ke Atas</a>
+        <h2>Siap belajar Teknik Komputer dan Jaringan?</h2>
+        <p>Mulai dari dasar, terus latihan, dan kuasai teknologi jaringan agar siap menghadapi dunia digital modern.</p>
+        <a class="btn btn-primary" href="#beranda">Kembali ke atas</a>
       </div>
     </section>
   </main>
@@ -592,7 +622,7 @@
   <footer>
     <div class="container footer-inner">
       <span>© 2025 NetKomp — Teknik Komputer dan Jaringan</span>
-      <span>Belajar materi dan latihan untuk memahami TKJ dengan lebih mudah.</span>
+      <span>Mengembangkan kemampuan digital dan jaringan secara praktis.</span>
     </div>
   </footer>
 
